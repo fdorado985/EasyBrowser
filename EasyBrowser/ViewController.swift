@@ -7,14 +7,30 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+  // MARK: - Public Properties
+
+  var webView: WKWebView!
+
+  // MARK: - View cycle
+
+  override func loadView() {
+    webView = WKWebView()
+    webView.navigationDelegate = self
+    view = webView
   }
 
-
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let url = URL(string: "https://juanfdorado-dev.weebly.com")!
+    webView.load(URLRequest(url: url))
+    webView.allowsBackForwardNavigationGestures = true // This enabled property of the web view allows users to swipe from the left or right edge to move backward or forward in their web browsing.
+  }
 }
 
+extension ViewController: WKNavigationDelegate {
+
+}
