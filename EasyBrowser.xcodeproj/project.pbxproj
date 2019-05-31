@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A97BA92222A18D7E0013E54F /* WebsitesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97BA92122A18D7E0013E54F /* WebsitesListViewController.swift */; };
 		A9E0C087229FA52B004C3480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0C086229FA52B004C3480 /* AppDelegate.swift */; };
-		A9E0C089229FA52B004C3480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0C088229FA52B004C3480 /* ViewController.swift */; };
+		A9E0C089229FA52B004C3480 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E0C088229FA52B004C3480 /* BrowserViewController.swift */; };
 		A9E0C08C229FA52B004C3480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9E0C08A229FA52B004C3480 /* Main.storyboard */; };
 		A9E0C08E229FA52C004C3480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9E0C08D229FA52C004C3480 /* Assets.xcassets */; };
 		A9E0C091229FA52C004C3480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9E0C08F229FA52C004C3480 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A97BA92122A18D7E0013E54F /* WebsitesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsitesListViewController.swift; sourceTree = "<group>"; };
 		A9E0C083229FA52B004C3480 /* EasyBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9E0C086229FA52B004C3480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A9E0C088229FA52B004C3480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A9E0C088229FA52B004C3480 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
 		A9E0C08B229FA52B004C3480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9E0C08D229FA52C004C3480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9E0C090229FA52C004C3480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,11 +57,12 @@
 			isa = PBXGroup;
 			children = (
 				A9E0C086229FA52B004C3480 /* AppDelegate.swift */,
-				A9E0C088229FA52B004C3480 /* ViewController.swift */,
+				A9E0C088229FA52B004C3480 /* BrowserViewController.swift */,
 				A9E0C08A229FA52B004C3480 /* Main.storyboard */,
 				A9E0C08D229FA52C004C3480 /* Assets.xcassets */,
 				A9E0C08F229FA52C004C3480 /* LaunchScreen.storyboard */,
 				A9E0C092229FA52C004C3480 /* Info.plist */,
+				A97BA92122A18D7E0013E54F /* WebsitesListViewController.swift */,
 			);
 			path = EasyBrowser;
 			sourceTree = "<group>";
@@ -135,7 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9E0C089229FA52B004C3480 /* ViewController.swift in Sources */,
+				A9E0C089229FA52B004C3480 /* BrowserViewController.swift in Sources */,
+				A97BA92222A18D7E0013E54F /* WebsitesListViewController.swift in Sources */,
 				A9E0C087229FA52B004C3480 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

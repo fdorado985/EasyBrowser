@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BrowserViewController.swift
 //  EasyBrowser
 //
 //  Created by Juan Francisco Dorado Torres on 5/30/19.
@@ -9,12 +9,14 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController {
+class BrowserViewController: UIViewController {
 
   // MARK: - Public Properties
 
   var webView: WKWebView!
   var progressView: UIProgressView!
+  var websites = [String]()
+  var selectedWebsiteIndex = 0
 
   // MARK: - View cycle
 
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    let url = URL(string: "https://juanfdorado-dev.weebly.com")!
+    let url = URL(string: "https://" + websites[selectedWebsiteIndex])!
     webView.load(URLRequest(url: url))
     webView.allowsBackForwardNavigationGestures = true // This enabled property of the web view allows users to swipe from the left or right edge to move backward or forward in their web browsing.
 
@@ -52,9 +54,9 @@ class ViewController: UIViewController {
 
   @objc func openTapped() {
     let ac = UIAlertController(title: "Open page...", message: nil, preferredStyle: .actionSheet)
-    ac.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage))
-    ac.addAction(UIAlertAction(title: "google.com", style: .default, handler: openPage))
-    ac.addAction(UIAlertAction(title: "juanfdorado-dev.weebly.com", style: .default, handler: openPage))
+    for website in websites {
+      ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
+    }
     ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: openPage))
     ac.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
     present(ac, animated: true)
@@ -76,10 +78,26 @@ class ViewController: UIViewController {
 
 // MARK: - WKNavigation Delegate
 
-extension ViewController: WKNavigationDelegate {
+extension BrowserViewController: WKNavigationDelegate {
 
   // This is called when the navigation is complete
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     title = webView.title
+  }
+
+  // It decides to allow or cancel the navigation
+  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    let url = navigationAction.request.url
+
+    if let host = url?.host {
+      for website in websites {
+        if host.contains(website) {
+          decisionHandler(.allow)
+          return
+        }
+      }
+    }
+
+    decisionHandler(.cancel)
   }
 }
