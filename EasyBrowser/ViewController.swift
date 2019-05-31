@@ -14,6 +14,7 @@ class ViewController: UIViewController {
   // MARK: - Public Properties
 
   var webView: WKWebView!
+  var progressView: UIProgressView!
 
   // MARK: - View cycle
 
@@ -31,6 +32,20 @@ class ViewController: UIViewController {
 
     // Bar button
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
+
+    // UIToolBar
+    progressView = UIProgressView(progressViewStyle: .default) // Instantiate the progressView
+    progressView.sizeToFit()
+    let progressButton = UIBarButtonItem(customView: progressView) // Create a barbutton using the progressView
+
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) // This is just the flexibleWidth
+    let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+
+    toolbarItems = [progressButton, spacer, refresh] // Here we add the buttons to the toolbar
+    navigationController?.isToolbarHidden = false // We show the toolbar
+
+    // KVO
+    webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
   }
 
   // MARK: - Public Methods
@@ -48,6 +63,14 @@ class ViewController: UIViewController {
   func openPage(action: UIAlertAction) {
     let url = URL(string: "https://" + action.title!)!
     webView.load(URLRequest(url: url))
+  }
+
+  // KVO Observer Method
+
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if keyPath == "estimatedProgress" {
+      progressView.progress = Float(webView.estimatedProgress)
+    }
   }
 }
 
