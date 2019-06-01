@@ -12,12 +12,20 @@ class WebsitesListViewController: UITableViewController {
 
   // MARK: - Public Properties
 
-  var websites = ["apple.com", "google.com", "juanfdorado-dev.weebly.com"]
+  var websites = [String]()
 
   // MARK: - View cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    if let websitesPath = Bundle.main.path(forResource: "websites", ofType: "txt") {
+      if let websitesURLS = try? String(contentsOfFile: websitesPath) {
+        websites = websitesURLS.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "\n")
+      }
+    } else {
+      websites = ["apple.com"]
+    }
   }
 }
 

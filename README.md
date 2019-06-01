@@ -26,3 +26,8 @@ Embed WebKit and learn about delegation, KVO, classes and UIToolbar
 | Screenshot 07 | Screenshot 08 |
 | ------------- | ------------- |
 | ![screenshot07](.screenshots/screenshot07.png) | ![screenshot08](.screenshots/screenshot08.png) |
+
+### features/external-file-for-websites
+| Screenshot 09 | Screenshot 10 | Screenshot 11 |
+| ------------- | ------------- | ------------- |
+| ![screenshot09](.screenshots/screenshot09.png) | ![screenshot10](.screenshots/screenshot10.png) | ![screenshot11](.screenshots/screenshot11.png) |
